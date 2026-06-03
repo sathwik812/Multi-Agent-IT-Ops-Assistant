@@ -1,0 +1,13 @@
+2026-05-14T14:28:10Z INFO [AppService] Starting application health check.
+2026-05-14T14:28:12Z INFO [DBPool] Connection pool established. Active: 10, Idle: 40.
+2026-05-14T14:29:05Z WARN [DBPool] Connection pool utilization high. Active: 48, Idle: 2.
+2026-05-14T14:29:10Z ERROR [AppService] Failed to fetch user profile data.
+java.sql.SQLTransientConnectionException: Connection is not available, request timed out after 5000ms.
+    at com.zaxxer.hikari.pool.HikariPool.createTimeoutException(HikariPool.java:696)
+    at com.zaxxer.hikari.pool.HikariPool.getConnection(HikariPool.java:197)
+    at com.example.service.UserService.getUserProfile(UserService.java:112)
+2026-05-14T14:29:15Z ERROR [AppService] OutOfMemoryError: Java heap space
+java.lang.OutOfMemoryError: Java heap space
+    at java.base/java.util.Arrays.copyOf(Arrays.java:3537)
+    at java.base/java.lang.AbstractStringBuilder.ensureCapacityInternal(AbstractStringBuilder.java:228)
+2026-05-14T14:30:00Z FATAL [System] Application crashing due to unhandled OOM condition.

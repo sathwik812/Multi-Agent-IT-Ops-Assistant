@@ -1,0 +1,29 @@
+groups:
+- name: ops_agent_alerts
+  rules:
+  - alert: HighAgentFailureRate
+    expr: rate(ops_agent_tasks_total{status="failure"}[5m]) > 0.1
+    for: 2m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High failure rate detected for agent {{ $labels.agent_type }}"
+      description: "Agent {{ $labels.agent_type }} has a failure rate > 10% over the last 5 minutes."
+
+  - alert: PipelineLatencyDegradation
+    expr: ops_pipeline_latency_seconds_sum / ops_pipeline_latency_seconds_count > 30
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Pipeline latency is increasing"
+      description: "Full pipeline execution is taking on average > 30 seconds."
+
+  - alert: SlackNotificationFailures
+    expr: increase(ops_slack_notifications_total{status="failure"}[10m]) > 0
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "Slack notification delivery failing"
+      description: "The system is unable to post incident summaries to Slack."

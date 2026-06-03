@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multi-agent-ops-assistant"
+version = "1.0.0"
+description = "A multi-agent IT operations assistant using LangGraph and FastAPI"
+readme = "Readme.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi[all]==0.110.0",
+    "langgraph==0.0.26",
+    "langchain==0.1.11",
+    "langchain-openai==0.0.8",
+    "langchain-anthropic==0.1.4",
+    "pydantic==2.6.3",
+    "uvicorn==0.27.1",
+    "redis==5.0.3",
+    "tenacity==8.2.3",
+    "loguru==0.7.2",
+    "prometheus-client==0.20.0",
+    "slack-sdk==3.27.1",
+    "python-dotenv==1.0.1",
+    "slowapi==0.1.28",
+    "twilio==9.0.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==8.1.1",
+    "pytest-asyncio==0.23.5",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
