@@ -56,7 +56,7 @@ This document details the architectural choices, trade-offs, and scaling strateg
 
 ## 12. Testing Strategy for Non-Deterministic Systems
 **Decision:** Pytest with environment mocking.
-**Rationale:** Testing LLMs in CI/CD is flaky. The test suite uses `monkeypatch` to strip the `OPENAI_API_KEY`, forcing the agents into their deterministic fallback paths. This allows the CI pipeline to verify the LangGraph routing logic and API layer independently of the LLM provider's uptime or response variability.
+**Rationale:** Testing LLMs in CI/CD is flaky. The test suite uses `monkeypatch` to strip the `GOOGLE_API_KEY`, forcing the agents into their deterministic fallback paths. This allows the CI pipeline to verify the LangGraph routing logic and API layer independently of the LLM provider's uptime or response variability.
 
 ## 13. Alert Actionability (Closing the Loop)
 **Decision:** Formatted Slack Block Kit messages.

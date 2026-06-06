@@ -3,7 +3,7 @@ import json
 from loguru import logger
 from pydantic import BaseModel, Field
 from typing import List, Optional
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from tenacity import retry, stop_after_attempt, wait_exponential
 
@@ -21,9 +21,9 @@ class IncidentSummary(BaseModel):
 
 class AlertSummariserAgent:
     def __init__(self):
-        self.api_key = os.getenv("OPENAI_API_KEY")
-        if self.api_key and self.api_key != "your-openai-api-key-here":
-            self.llm = ChatOpenAI(temperature=0, model="gpt-4o", api_key=self.api_key)
+        self.api_key = os.getenv("GOOGLE_API_KEY")
+        if self.api_key and self.api_key != "your-google-api-key-here":
+            self.llm = ChatGoogleGenerativeAI(temperature=0, model="gemini-1.5-pro", google_api_key=self.api_key)
             self.structured_llm = self.llm.with_structured_output(IncidentSummary)
         else:
             self.llm = None

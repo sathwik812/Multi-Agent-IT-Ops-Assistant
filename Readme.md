@@ -101,7 +101,7 @@ Inspired by real-world IT operations experience managing CIM workflows, ServiceN
 - **Agent Orchestration:** LangGraph
 - **Workflow Scheduling:** Apache Airflow 2.9
 - **API Layer:** FastAPI
-- **LLM Backend:** OpenAI GPT-4o / Claude API
+- **LLM Backend:** Google Gemini (1.5 Pro) API
 - **Retry Logic:** Tenacity
 - **Monitoring:** Prometheus + Loguru
 - **Alerting:** Slack Webhooks, Twilio (SMS), SMTP Email
@@ -114,7 +114,7 @@ Inspired by real-world IT operations experience managing CIM workflows, ServiceN
 ### Prerequisites
 - Python 3.11+
 - Docker & Docker Compose
-- OpenAI API key
+- Google Gemini API key
 - Slack Webhook URL (for alerting)
 
 ### 1. Clone the repo
@@ -126,7 +126,7 @@ cd multi-agent-ops-assistant
 ### 2. Set up environment
 ```bash
 cp .env.example .env
-# Fill in: OPENAI_API_KEY, SLACK_WEBHOOK_URL, REDIS_URL
+# Fill in: GOOGLE_API_KEY, SLACK_WEBHOOK_URL, REDIS_URL
 pip install -e .[dev]
 ```
 
